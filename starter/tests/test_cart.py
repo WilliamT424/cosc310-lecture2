@@ -55,5 +55,12 @@ def test_removing_an_absent_item_raises():
     with pytest.raises(KeyError):
         cart.remove_item(999)
 
-
 # TODO: add one test of your own. What behaviour is not covered above?
+def test_removing_an_item_drops_it_from_the_cart():
+    cart = Cart()
+    cart.add_item(GYOZA, 2)
+    cart.add_item(RAMEN, 1)
+    cart.remove_item(GYOZA["id"])
+    assert len(cart.lines) == 1
+    assert cart.lines[0]["item_id"] == RAMEN["id"]
+    assert cart.total() == 16.50
