@@ -1,0 +1,1 @@
+This is the solutions for the lecture2 assignement
